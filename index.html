@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>APEX MOTORS — Virtual Showroom</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+  <!-- Custom Cursor -->
+  <div class="cursor"      id="cursor"></div>
+  <div class="cursor-ring" id="cursorRing"></div>
+
+  <!-- ========== HEADER ========== -->
+  <header>
+    <div class="logo">APEX<span>MOTORS</span></div>
+    <nav>
+      <a href="#">Kolleksiya</a>
+      <a href="#">Konfigurator</a>
+      <a href="#">Taqqoslash</a>
+      <a href="#">Aloqa</a>
+    </nav>
+    <div class="header-badge">2025 Model Yil</div>
+  </header>
+
+  <!-- ========== HERO ========== -->
+  <section class="hero">
+    <div class="hero-grid"></div>
+    <div class="hero-subtitle">Virtual Avtosalon — Toshkent</div>
+    <h1 class="hero-title">
+      Mukammal
+      <em>Harakatda</em>
+    </h1>
+    <p class="hero-desc">
+      Dunyoning eng yaxshi avtomobillarini virtual ravishda kashf eting.
+      Rang tanlang, jihozlang, narxni hisoblang.
+    </p>
+    <div class="scroll-hint">
+      <span>Pastga aylantiring</span>
+      <div class="scroll-line"></div>
+    </div>
+  </section>
+
+  <!-- ========== STATS BAR ========== -->
+  <div class="stats-bar">
+    <div class="stat-block">
+      <div class="stat-num">3<span class="stat-unit">+</span></div>
+      <div class="stat-desc">Premium Brend</div>
+    </div>
+    <div class="stat-block">
+      <div class="stat-num">720<span class="stat-unit">l.k.</span></div>
+      <div class="stat-desc">Maksimal Quvvat</div>
+    </div>
+    <div class="stat-block">
+      <div class="stat-num">2.9<span class="stat-unit">s</span></div>
+      <div class="stat-desc">0–100 km/s</div>
+    </div>
+    <div class="stat-block">
+      <div class="stat-num">350<span class="stat-unit">+</span></div>
+      <div class="stat-desc">km/s Max Tezlik</div>
+    </div>
+  </div>
+
+  <!-- ========== CAR COLLECTION ========== -->
+  <div class="section">
+    <div class="section-label">Kolleksiya — 2025</div>
+    <h2 class="section-title">Premium Avtomobillar</h2>
+    <div class="cars-grid" id="carsGrid"></div>
+  </div>
+
+  <!-- ========== CONFIGURATOR MODAL ========== -->
+  <div class="modal-overlay" id="modalOverlay">
+    <div class="modal" id="modal">
+
+      <div class="modal-header">
+        <div>
+          <div class="modal-brand"    id="modalBrand"></div>
+          <div class="modal-car-name" id="modalName"></div>
+        </div>
+        <button class="close-btn" onclick="closeModal()">✕ Yopish</button>
+      </div>
+
+      <div class="modal-body">
+
+        <!-- Left: Preview -->
+        <div class="modal-preview">
+          <div id="previewSvgContainer"></div>
+          <div class="modal-color-picker" id="modalColorPicker"></div>
+
+          <div class="interior-toggle">
+            <button class="interior-btn" onclick="toggleInterior()">
+              Ichki Ko'rinish
+            </button>
+          </div>
+
+          <!-- Interior SVG overlay -->
+          <div class="interior-view" id="interiorView">
+            <svg class="interior-svg" viewBox="0 0 240 130" fill="none">
+              <rect x="10" y="20" width="220" height="100" rx="8"
+                    fill="#1a1a24" stroke="#e8b143" stroke-width="0.5"/>
+              <rect x="20" y="30" width="200" height="60" rx="4" fill="#111118"/>
+              <!-- Dashboard gauges -->
+              <rect x="30" y="40" width="80" height="40" rx="3"
+                    fill="#0d0d14" stroke="#333" stroke-width="0.5"/>
+              <circle cx="50" cy="55" r="12" fill="none" stroke="#e8b143" stroke-width="1"/>
+              <circle cx="50" cy="55" r="8"  fill="none" stroke="#555"   stroke-width="0.5"/>
+              <circle cx="90" cy="55" r="12" fill="none" stroke="#e8b143" stroke-width="1"/>
+              <!-- Steering wheel -->
+              <circle cx="170" cy="60" r="22" fill="none" stroke="#333" stroke-width="3"/>
+              <circle cx="170" cy="60" r="8"  fill="#222" stroke="#444" stroke-width="1"/>
+              <line x1="170" y1="38" x2="170" y2="52" stroke="#555" stroke-width="2"/>
+              <line x1="148" y1="60" x2="162" y2="60" stroke="#555" stroke-width="2"/>
+              <line x1="178" y1="60" x2="192" y2="60" stroke="#555" stroke-width="2"/>
+              <!-- Seats -->
+              <rect x="30"  y="80" width="60" height="32" rx="4" fill="#1e1e28" stroke="#333" stroke-width="0.5"/>
+              <rect x="35"  y="78" width="50" height="8"  rx="2" fill="#252530"/>
+              <rect x="110" y="80" width="60" height="32" rx="4" fill="#1e1e28" stroke="#333" stroke-width="0.5"/>
+              <rect x="115" y="78" width="50" height="8"  rx="2" fill="#252530"/>
+              <!-- Center screen -->
+              <rect x="120" y="38" width="45" height="28" rx="2"
+                    fill="#0a0a15" stroke="#e8b143" stroke-width="0.5"/>
+              <rect x="123" y="41" width="39" height="22" rx="1" fill="#060610"/>
+              <line x1="130" y1="48" x2="155" y2="48" stroke="#e8b143" stroke-width="0.5" opacity="0.5"/>
+              <line x1="130" y1="52" x2="150" y2="52" stroke="#555" stroke-width="0.5"/>
+              <line x1="130" y1="56" x2="148" y2="56" stroke="#555" stroke-width="0.5"/>
+            </svg>
+            <div class="interior-label">Ichki Ko'rinish — Premium Salon</div>
+            <button class="interior-btn" onclick="toggleInterior()" style="margin-top:8px">
+              Tashqi Ko'rinish
+            </button>
+          </div>
+        </div>
+
+        <!-- Right: Options -->
+        <div class="modal-options">
+          <div class="options-title">Konfiguratsiya</div>
+          <div id="optionsList"></div>
+        </div>
+
+      </div><!-- /.modal-body -->
+
+      <div class="total-section">
+        <div>
+          <div class="total-label">Jami Narx</div>
+          <div class="total-price" id="totalPrice">$0</div>
+        </div>
+        <button class="order-btn" onclick="placeOrder()">
+          Buyurtma Berish →
+        </button>
+      </div>
+
+    </div><!-- /.modal -->
+  </div><!-- /.modal-overlay -->
+
+  <!-- ========== TOAST ========== -->
+  <div class="toast" id="toast">✓ Buyurtma qabul qilindi!</div>
+
+  <script src="script.js"></script>
+</body>
+</html>
